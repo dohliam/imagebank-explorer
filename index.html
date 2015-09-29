@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title>ASP Imagebank Explorer</title>
+    <meta content="">
+    <link rel="stylesheet" type="text/css"
+      href="http://yegor256.github.io/tacit/tacit.min.css"/>
+    <script src="asp_img_wordlist.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      function contains(a, obj) {
+        var i = a.length;
+        while (i--) {
+          if (a[i] === obj) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function img_search() {
+        var input = window.key_input;
+        var output = document.getElementById("output");
+        var result_array = [];
+        for (var n = 0; n<img_index.length; n++) {
+          key_array = img_index[n].k.split(",");
+          if (contains(key_array, input.value)) {
+            result_array.push("<img src='https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg'/>");
+          }
+        }
+        output.innerHTML = result_array.join("<br>");
+      }
+    </script>
+  </head>
+  <body OnLoad="window.key_input.focus();">
+    <h1>ASP Imagebank Explorer</h1>
+    <h2>Search</h2>
+      <form onsubmit="return false">
+        <input type="text" id="key_input" autocomplete="off" />
+        <input type="submit" value="Search" onclick="img_search()">
+      </form>
+    <h2>Gallery</h2>
+      <div id="output">&nbsp;</div>
+  </body>
+</html>
