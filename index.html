@@ -20,11 +20,19 @@
         return false;
       }
 
-      function img_search() {
+      function img_search(args) {
         var input = window.key_input;
         var output = document.getElementById("output");
         var message = document.getElementById("message");
         var result_array = [];
+        var counter = 0;
+        var keyword = input.value;
+        console.log(args)
+        if (args) {
+          keyword = args;
+        }
+        input.value = keyword;
+        input.select();
         for (var n = 0; n<img_index.length; n++) {
           key_array = img_index[n].k.split(",");
           if (contains(key_array, keyword)) {
@@ -48,7 +56,7 @@
       }
     </script>
   </head>
-  <body OnLoad="window.key_input.focus();">
+  <body onload="var geturl = location.href; if (/\?/.test(geturl) == true) { var args = /\?(.*)/.exec(geturl)[1]; img_search(args);} window.key_input.focus();">
     <h1>ASP Imagebank Explorer</h1>
     <h2>Search</h2>
       <form onsubmit="return false">
