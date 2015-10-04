@@ -23,6 +23,7 @@
       function img_search() {
         var input = window.key_input;
         var output = document.getElementById("output");
+        var message = document.getElementById("message");
         var result_array = [];
         for (var n = 0; n<img_index.length; n++) {
           key_array = img_index[n].k.split(",");
@@ -38,7 +39,12 @@
             counter++;
           }
         }
-        output.innerHTML = result_array.join("<br>");
+        if (counter == 0) {
+          message.innerHTML = "No results found for \"" + keyword + "\" -- try another keyword!";
+        } else {
+          message.innerHTML = "Your search for \"" + keyword + "\" returned " + counter.toString() + " results:";
+        }
+        output.innerHTML = "              <table>\n        <tr>\n" + result_array.join("\n") + "        </tr>\n      </table>";
       }
     </script>
   </head>
@@ -49,6 +55,7 @@
         <input type="text" id="key_input" autocomplete="off" />
         <input type="submit" value="Search" onclick="img_search()">
       </form>
+      <div id="message">&nbsp;</div>
     <h2>Gallery</h2>
       <div id="output">&nbsp;</div>
   </body>
