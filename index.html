@@ -26,8 +26,16 @@
         var result_array = [];
         for (var n = 0; n<img_index.length; n++) {
           key_array = img_index[n].k.split(",");
-          if (contains(key_array, input.value)) {
-            result_array.push("<img src='https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg'/>");
+          if (contains(key_array, keyword)) {
+            img_splt = img_index[n].i.split("/");
+            img = img_splt[1];
+            idx = img_splt[0];
+            if (counter % 4 == 0 && counter != 0) {
+              result_array.push("        </tr>\n        <tr>\n          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Image " + img + " from story #" + idx + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
+            } else {
+              result_array.push("          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Image " + img + " from story #" + idx + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
+            }
+            counter++;
           }
         }
         output.innerHTML = result_array.join("<br>");
