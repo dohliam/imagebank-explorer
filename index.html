@@ -27,7 +27,6 @@
         var result_array = [];
         var counter = 0;
         var keyword = input.value;
-        console.log(args)
         if (args) {
           keyword = args;
         }
@@ -39,10 +38,12 @@
             img_splt = img_index[n].i.split("/");
             img = img_splt[1];
             idx = img_splt[0];
+            lic = img_index[n].l.replace(/b/, "CC-BY").replace(/n, "CC-BY-NC"/);
+            ill = img_index[n].p.replace(/,/g, ", ");
             if (counter % 4 == 0 && counter != 0) {
-              result_array.push("        </tr>\n        <tr>\n          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Image " + img + " from story #" + idx + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
+              result_array.push("        </tr>\n        <tr>\n          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Story #" + idx + " | License: " + lic + " | " + ill + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
             } else {
-              result_array.push("          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Image " + img + " from story #" + idx + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
+              result_array.push("          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Story #" + idx + " | License: " + lic + " | " + ill + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
             }
             counter++;
           }
