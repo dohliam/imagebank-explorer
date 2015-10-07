@@ -17,3 +17,5 @@ There are a small number of Afrikaans, Swahili, and other language keywords incl
 MIT license -- see LICENSE file for details.
 
 All of the images in the [ASP Image Bank](https://github.com/global-asp/asp-imagebank) are released under a Creative Commons license, either CC-BY or CC-BY-NC, in accordance with the license of the original stories from which they were extracted. See the [ASP Image Bank](https://github.com/global-asp/asp-imagebank) repo for details on the individual image licenses.
+
+[Tacit CSS](https://github.com/yegor256/tacit/) by Yegor Bugayenko is licensed under MIT.
