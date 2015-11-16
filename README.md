@@ -2,7 +2,7 @@
 This is a lightweight tool to explore the open-licensed images in the [African Storybook Project](http://africanstorybook.org/) using keywords derived from the stories themselves.
 
 ## Usage
-Just type keywords into the search box. Try a few simple words like ["bird"](https://global-asp.github.io/imagebank/?bird), ["cat"](https://global-asp.github.io/imagebank/?cat), ["tree"](https://global-asp.github.io/imagebank/?tree), ["lion"](https://global-asp.github.io/imagebank/?lion), or ["river"](https://global-asp.github.io/imagebank/?river) to get a sense of what sort of images can be found.
+Just type a keyword into the search box. Try a few simple words like ["bird"](https://global-asp.github.io/imagebank/?bird), ["cat"](https://global-asp.github.io/imagebank/?cat), ["tree"](https://global-asp.github.io/imagebank/?tree), ["lion"](https://global-asp.github.io/imagebank/?lion), or ["river"](https://global-asp.github.io/imagebank/?river) to get a sense of what sort of images can be found.
 
 Specific image searches can be linked to directly by using the simple API -- just add your term after a question mark appended to the end of the URL, e.g.:
 
@@ -11,7 +11,7 @@ Specific image searches can be linked to directly by using the simple API -- jus
 Attribution and license information for individual images can be displayed by hovering over the search image results.
 
 ## Supported languages
-The [ASP image bank](https://github.com/global-asp/asp-imagebank) was created as a side effect of generating extracting source stories for the [Global African Storybook Project](https://global-asp.github.io/).
+The [ASP image bank](https://github.com/global-asp/asp-imagebank) was created as a byproduct of extracting source stories from ASP pdfs for the [Global African Storybook Project](https://global-asp.github.io/).
 
 A [corpus of English ASP texts](https://github.com/global-asp/asp-source) has been used to create the wordlist for this tool as a proof-of-concept, however support will be added soon for all the languages included in both the [African Storybook Project](http://africanstorybook.org/) and [Global African Storybook Project](https://global-asp.github.io/).
 
