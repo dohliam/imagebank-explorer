@@ -36,3 +36,7 @@
 .image:hover:after, .image:hover:before {
     opacity:1;
 }
+.layout tbody td {
+  border: 0;
+  vertical-align: top;
+}
