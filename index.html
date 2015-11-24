@@ -6,121 +6,25 @@
     <meta content="">
     <link rel="stylesheet" type="text/css" href="https://yegor256.github.io/tacit/tacit.min.css"/>
     <link rel="stylesheet" type="text/css" href="img.css"/>
-<!--     <script src="asp_img_wordlist.js" type="text/javascript"></script> -->
+     <script src="imgsearch.js" type="text/javascript"></script> 
     <script type="text/javascript">
-      function contains(a, obj) {
-        var i = a.length;
-        while (i--) {
-          if (a[i] === obj) {
-            return true;
-          }
-        }
-        return false;
-      }
 
       fileadded = "";
-      l_changed = "";
+      lang = "en";
+      keyword = "";
 
-      function loadwordlist(lang) {
-        wl = 'js/asp_img_wordlist-' + lang + '.js';
-        if (fileadded != wl) {
-          var wlsrc = document.createElement('script');
-          wlsrc.setAttribute("type","text/javascript");
-          wlsrc.setAttribute("src", wl);
-          wlsrc.setAttribute("onload", "quick_api()");
-          document.getElementsByTagName("head")[0].appendChild(wlsrc);
-          fileadded = wl;
-        }
-      }
+      quick_api();
 
-      function img_search(args,l) {
-        var input = window.key_input;
-        var output = document.getElementById("output");
-        var message = document.getElementById("message");
-        var result_array = [];
-        var counter = 0;
-        var keyword = input.value;
-        var lang = "en";
-        if (args) {
-          keyword = args;
-        }
-
-        var geturl = location.href;
-        if (/\?lang=/.test(geturl) == true) {
-          lang = /\?lang=([a-z]+)/.exec(geturl)[1];
-        }
-
-        if (l) {
-          lang = l;
-        }
-
-        lang_switcher = document.getElementById("lang_switcher");
-
-        if (l_changed != "") {
-          lang = lang_switcher.value;
-        }
-        loadwordlist(lang);
-
-        input.value = keyword;
-        input.select();
-        window.lang_switcher.value = lang;
-        for (var n = 0; n<img_index.length; n++) {
-          key_array = img_index[n].k.split(",");
-          if (contains(key_array, keyword.toLowerCase())) {
-            img_splt = img_index[n].i.split("/");
-            img = img_splt[1];
-            idx = img_splt[0];
-            lic = img_index[n].l.replace(/b/, "CC-BY").replace(/n, "CC-BY-NC"/);
-            ill = img_index[n].p.replace(/,/g, ", ");
-            if (counter % 4 == 0 && counter != 0) {
-              result_array.push("        </tr>\n        <tr>\n          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Story #" + idx + " | License: " + lic + " | " + ill + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
-            } else {
-              result_array.push("          <td>\n            <a href=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\"><div data-content=\"Story #" + idx + " | License: " + lic + " | " + ill + "\" class=\"image\"><img src=\"https://raw.githubusercontent.com/global-asp/asp-imagebank/master/medium/" + img_index[n].i + ".jpg\" alt=\"\" /></div></a>" + "\n       </td>");
-            }
-            counter++;
-          }
-        }
-        if (counter == 0) {
-          message.innerHTML = "No results found for \"" + keyword + "\" -- try another keyword!";
-        } else {
-          message.innerHTML = "Your search for \"" + keyword + "\" returned " + counter.toString() + " results:";
-        }
-        output.innerHTML = "              <table>\n        <tr>\n" + result_array.join("\n") + "        </tr>\n      </table>";
-      }
-
-      function quick_api() {
-        var geturl = location.href;
-        var lang = "en";
-        if (/\?/.test(geturl) == true) {
-          if (/\?lang=/.test(geturl) == true) {
-            if (/&q=/.test(geturl) == true) {
-              lang = /\?lang=([a-z]+)&q=.*/.exec(geturl)[1];
-              var args = /\?.*&q=(.*)/.exec(geturl)[1];
-              img_search(decodeURI(args),lang);
-            } else {
-              lang = /\?lang=([a-z]+)/.exec(geturl)[1];
-              loadwordlist(lang);
-            }
-          } else {
-            var args = /\?(.*)/.exec(geturl)[1];
-            img_search(decodeURI(args),"en");
-          }
-        } else if (fileadded == "") {
-          loadwordlist(lang);
-        }
-        window.key_input.focus();
-        window.lang_switcher.value = lang;
-      }
     </script>
   </head>
-  <body onload="quick_api()">
+  <body onload="page_loaded()">
     <h1>ASP Imagebank Explorer</h1>
     <h2>Search</h2>
       <form onsubmit="return false">
         <table class="layout"><tr><td>
         <input type="text" id="key_input" autocomplete="off" accesskey="s" />
       </td><td>
-      <select id="lang_switcher" onchange="l_changed='y'; loadwordlist(this.value);">
+      <select id="lang_switcher" onchange="loadwordlist(this.value);">
         <option value="af">Afrikaans</option>
         <option value="zh">Chinese</option>
         <option value="en">English</option>
