@@ -99,6 +99,7 @@
         window.key_input.focus();
         window.lang_switcher.value = lang;
         if (keyword != "") {
+          window.key_input.value = keyword;
           options = {"l":lang, "k":keyword};
           img_search(options);
         }
