@@ -1,1 +1,0 @@
-var img_index = [];
